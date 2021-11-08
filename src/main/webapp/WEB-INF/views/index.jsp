@@ -19,17 +19,16 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>${donationsProvided}</em>
+            <em>${bagsProvided}</em>
 
             <h3>Oddanych worków</h3>
-            <p>Im więcej oddanych worków, tym więcej możliwości na uszczęśliwienie kogoś</p>
+            <p>Im więcej oddanych worków, tym mniej kursów samochodem - śladu węglowego i zatruwania środowiska.</p>
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${donationsProvided}</em>
             <h3>Przekazanych darów</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
-                quam.</p>
+            <p>Im więcej darów tym więcej możliwości na uszczęśliwienie kogos</p>
         </div>
 
     </div>

@@ -22,11 +22,23 @@ public class JpaDonationService implements DonationService{
         return donationRepository.findAll();
     }
 
-    public int getNumberOfDonationsProvided(){
+    @Override
+    public void saveDonation(Donation donation) {
+        donationRepository.save(donation);
+    }
+
+    public int getNumberOfBagsProvided(){
         List<Donation> allDonations = getAllDonations();
         List<Donation> filteredDonations = allDonations.stream()
                 .filter(d -> LocalDate.now().isAfter(d.getPickUpDate()) || (LocalDate.now().equals(d.getPickUpDate()) && LocalTime.now().isAfter(d.getPicUpTime())))
                 .collect(Collectors.toList());
         return filteredDonations.stream().mapToInt(Donation::getQuantity).sum();
+    }
+    public int getNumberOfDotationsProvided(){
+        List<Donation> allDonations = getAllDonations();
+        List<Donation> filteredDonations = allDonations.stream()
+                .filter(d -> LocalDate.now().isAfter(d.getPickUpDate()) || (LocalDate.now().equals(d.getPickUpDate()) && LocalTime.now().isAfter(d.getPicUpTime())))
+                .collect(Collectors.toList());
+        return filteredDonations.size();
     }
 }
