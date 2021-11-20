@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el => {
       el.classList.remove("selecting");
     });
+
   });
 
   /**
@@ -151,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.innerText = this.currentStep;
 
       // TODO: Validation
-
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
@@ -164,6 +164,44 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      const summaryQuantity = document.querySelector('#summaryQuantity');
+      const summaryStreet = document.querySelector('#summaryStreet');
+      const summaryCity = document.querySelector('#summaryCity');
+      const summaryZipcode = document.querySelector('#summaryZipcode');
+      const summaryPickUpDate = document.querySelector('#summaryPickUpDate');
+      const summaryPickUpTime = document.querySelector('#summaryPickUpTime');
+      const summaryCategories = document.querySelector('#summaryCategories')
+      const summaryInstitution = document.querySelector('#summaryInstitution')
+      const summaryPickUpComment = document.querySelector('#summaryPickUpComment');
+
+      let categories = Array.from(document.getElementsByClassName("costam"));
+      let categoriesNames = "";
+      categories.forEach(function (element){
+        if(element.parentElement.firstElementChild.checked){
+          categoriesNames = categoriesNames + element.innerText + ", ";
+        }
+      });
+      categoriesNames = categoriesNames.substring(0, categoriesNames.length - 1);
+      categoriesNames = categoriesNames.substring(0, categoriesNames.length - 1);
+      console.log(categoriesNames);
+
+      let intstitutions = Array.from(document.getElementsByClassName("institutionTitle"))
+      let institutionName = ""
+      intstitutions.forEach(function (element){
+        if(element.parentElement.parentElement.firstElementChild.checked){
+          institutionName = element.innerText;
+        }
+      });
+      console.log(institutionName);
+      summaryQuantity.innerHTML = document.querySelector('input[name="quantity"]').value;
+      summaryStreet.innerHTML = document.querySelector('input[name="street"]').value;
+      summaryCity.innerHTML = document.querySelector('input[name="city"]').value;
+      summaryZipcode.innerHTML = document.querySelector('input[name="zipCode"]').value;
+      summaryPickUpDate.innerHTML = document.querySelector('input[name="pickUpDate"]').value;
+      summaryPickUpTime.innerHTML = document.querySelector('input[name="picUpTime"]').value;
+      summaryCategories.innerHTML = categoriesNames;
+      summaryInstitution.innerHTML = institutionName;
+      summaryPickUpComment.innerHTML = document.querySelector('textarea[name="pickUpComment"]').value;
     }
 
   }

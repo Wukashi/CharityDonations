@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Stwórz dar</title>
-    <link rel="stylesheet" href="../../resources/css/style.css" />
+    <link rel="stylesheet" href="../../../resources/css/style.css" />
 </head>
 <body>
 <%@include file="../header.jsp"%>
@@ -51,7 +51,7 @@
                                     value="${category.id}"
                             />
                             <span class="checkbox"></span>
-                            <span class="description"
+                            <span class="description costam"
                             >${category.name}</span
                             >
                             <form:checkbox path="categories" value="${category.id}"/>
@@ -85,13 +85,11 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institution" value="${institution.id}"
-                                ${donation.institution.equals(institution) ? "checked" : ""}/>
-                            <span class="checkbox radio"></span>
-                            <span class="description">
-                                        <div class="title institutionTitle">${institution.name}</div>
-                                        <div class="subtitle">${institution.description}</div>
-                                    </span>
+                            <input type="radio" name="institution" value="${institution.id}"${donation.institution.equals(institution) ? "checked" : ""}/><span class="checkbox radio"></span>
+                                <span class="description">
+                                    <div class="title institutionTitle">${institution.name}</div>
+                                    <div class="subtitle">${institution.description}</div>
+                                </span>
                             <form:radiobutton path="institution" value="${institution.id}"/>
                         </label>
                     </div>
@@ -137,7 +135,7 @@
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea name="more_info" rows="5" path="pickUpComment"></form:textarea>
+                                <form:textarea type="text" rows="5" path="pickUpComment"/>
                             </label>
                         </div>
                     </div>
@@ -157,15 +155,14 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span> Ilość worków: <span id="summaryQuantity"></span> Rodzaje rzeczy: <span id="summaryCategories"></span></span>
+
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
+                                >Dla fundacji <span id="summaryInstitution"></span> </span
                                 >
                             </li>
                         </ul>
@@ -175,19 +172,18 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li><span id="summaryStreet"></span></li>
+                                <li><span id="summaryCity"></span></li>
+                                <li><span id="summaryZipcode"></span></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li><span id="summaryPickUpDate"></span></li>
+                                <li><span id="summaryPickUpTime"></span></li>
+                                <li><span id="summaryPickUpComment"></span></li>
                             </ul>
                         </div>
                     </div>
@@ -204,6 +200,6 @@
 
 <%@include file="../footer.jsp"%>
 
-<script src="../../resources/js/app.js"></script>
+<script src="../../../resources/js/app.js"></script>
 </body>
 </html>
